@@ -1,4 +1,4 @@
-package com.example.twittersearchclient.network
+package com.example.twittersearchclient.data.network
 
 sealed class ApiResultData<out T> {
     data class Success<out T>(val data: T? = null): ApiResultData<T>()
