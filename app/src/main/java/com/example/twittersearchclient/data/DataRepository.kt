@@ -28,7 +28,7 @@ class DataRepository @Inject constructor(
     }
 
     fun getFilteredTweetFromDb(searchedString: String): Flow<List<Tweet>>{
-        return tweetsDao.getFilteredTweets(searchedString)
+        return tweetsDao.getFilteredTweets("%$searchedString%")
     }
 
 }

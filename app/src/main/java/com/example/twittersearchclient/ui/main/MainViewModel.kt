@@ -18,21 +18,23 @@ class MainViewModel @ViewModelInject constructor(
     private val dataRepository: DataRepository
 ) : AndroidViewModel(application) {
 
-    private var apiNetworkState = MutableLiveData<ApiResultData<String>>()
+    private var _apiNetworkState = MutableLiveData<ApiResultData<String>>()
+    val apiNetworkState: LiveData<ApiResultData<String>> = _apiNetworkState
+    private var searchedText = MutableLiveData<String>()
 
     fun getInternetConnectionStatus(): Boolean{
         return GeneralUtility.checkInternet(getApplication())
     }
 
     fun callApiToFetchTweets(){
-        apiNetworkState.value = ApiResultData.Loading()
+        _apiNetworkState.value = ApiResultData.Loading()
         viewModelScope.launch {
             val apiResponseModel = dataRepository.getAllTweetsFromApi()
             if (apiResponseModel.success){
                 insertAllTweets(apiResponseModel.tweetList)
-                apiNetworkState.value = ApiResultData.Success("Successful")
+                _apiNetworkState.value = ApiResultData.Success("Successful")
             } else {
-                apiNetworkState.value = ApiResultData.Failed("failed to get data")
+                _apiNetworkState.value = ApiResultData.Failed("failed to get data")
             }
         }
     }
@@ -47,7 +49,13 @@ class MainViewModel @ViewModelInject constructor(
         return dataRepository.getAllTweetsFromDb().asLiveData()
     }
 
-    fun getAllFilteredTweetsFromDb(searchedString: String): LiveData<List<Tweet>>{
-        return dataRepository.getFilteredTweetFromDb(searchedString).asLiveData()
+    fun getAllFilteredTweetsFromDb(): LiveData<List<Tweet>>{
+        return Transformations.switchMap(searchedText){
+            dataRepository.getFilteredTweetFromDb(it).asLiveData()
+        }
+    }
+
+    fun searchTweets(searchedString: String){
+        searchedText.value = searchedString
     }
 }
