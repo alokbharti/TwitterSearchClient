@@ -54,6 +54,7 @@ class MainFragment : Fragment() {
                     binding.tvApiState.visibility = View.GONE
                 }
                 is ApiResultData.Loading -> {
+                    binding.pbLoading.visibility = View.VISIBLE
                     binding.tvApiState.text = getString(R.string.loading_data)
                 }
                 is ApiResultData.Failed -> {
