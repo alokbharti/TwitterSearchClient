@@ -1,8 +1,8 @@
-package com.example.twittersearchclient
+package com.example.twittersearchclient.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.twittersearchclient.ui.main.MainFragment
+import com.example.twittersearchclient.R
 
 class MainActivity : AppCompatActivity() {
 
