@@ -14,6 +14,6 @@ interface TweetsDao {
     @Query("SELECT * FROM Tweet")
     fun getAllTweets(): Flow<List<Tweet>>
 
-    @Query("SELECT * FROM Tweet WHERE handle LIKE '%'+:searchedText+'%' OR name LIKE '%'+:searchedText+'%' OR tweetText LIKE '%'+:searchedText+'%'")
+    @Query("SELECT * FROM Tweet WHERE handle LIKE '%'+:searchedText+'%' OR name LIKE '%'+:searchedText+'%' OR text LIKE '%'+:searchedText+'%'")
     fun getFilteredTweets(searchedText: String): Flow<List<Tweet>>
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="tweet"
+            type="com.example.twittersearchclient.model.Tweet" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp">
+
+        <ImageView
+            android:id="@+id/iv_person"
+            android:layout_width="@dimen/margin_50dp"
+            android:layout_height="@dimen/margin_50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_person_24dp"
+            android:background="@drawable/ic_circle_24dp"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_person"
+            android:text="@{tweet.name}"
+            tools:text="Alok Bharti"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:layout_marginStart="@dimen/margin_8dp"/>
+
+        <TextView
+            android:id="@+id/tv_handle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:layout_constraintStart_toEndOf="@id/iv_person"
+            android:layout_marginStart="@dimen/margin_4dp"
+            android:text="@{tweet.handle}"
+            tools:text="`@AlokBharti`"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_16sp"/>
+
+        <ImageView
+            android:id="@+id/iv_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_fav"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(tweet.favoriteCount)}"
+            app:layout_constraintEnd_toStartOf="@id/iv_fav"
+            app:layout_constraintTop_toTopOf="@id/iv_fav"
+            app:layout_constraintBottom_toBottomOf="@id/iv_fav"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            tools:text="4"/>
+
+        <ImageView
+            android:id="@+id/iv_retweet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iv_fav"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:src="@drawable/ic_retweet"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(tweet.retweetCount)}"
+            app:layout_constraintEnd_toStartOf="@id/iv_retweet"
+            app:layout_constraintTop_toTopOf="@id/iv_retweet"
+            app:layout_constraintBottom_toBottomOf="@id/iv_retweet"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            tools:text="46589" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_handle"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@{tweet.text}"
+            tools:text="@tools:sample/lorem/random"
+            android:textColor="@android:color/black"
+            android:layout_margin="@dimen/margin_8dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

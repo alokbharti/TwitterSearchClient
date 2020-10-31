@@ -6,5 +6,5 @@ data class ApiResponseModel(
     @SerializedName("success")
     var success: Boolean,
     @SerializedName("data")
-    var data: List<Tweet>
+    var tweetList: List<Tweet>
 )

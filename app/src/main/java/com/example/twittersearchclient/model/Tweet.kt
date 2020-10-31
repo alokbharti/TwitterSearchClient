@@ -18,6 +18,6 @@ data class Tweet (
     var favoriteCount: Int,
     @SerializedName("text")
     var text: String,
-    @PrimaryKey
-    var timeStamp: Long = System.currentTimeMillis()
+    @PrimaryKey(autoGenerate = true)
+    var timeStamp: Long
 )
