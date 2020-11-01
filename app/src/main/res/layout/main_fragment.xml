@@ -50,6 +50,17 @@
                             android:hint="@string/hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <ImageView
+                        android:id="@+id/iv_close_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/tel_search"
+                        app:layout_constraintBottom_toBottomOf="@id/tel_search"
+                        app:layout_constraintEnd_toEndOf="@id/tel_search"
+                        android:layout_marginEnd="@dimen/margin_16dp"
+                        android:src="@drawable/ic_baseline_close_24"
+                        android:visibility="gone"/>
+
                     <Button
                         android:id="@+id/btn_search"
                         android:layout_width="wrap_content"

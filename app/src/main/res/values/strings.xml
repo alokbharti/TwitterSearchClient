@@ -4,4 +4,5 @@
     <string name="search">search</string>
     <string name="failed_api_response">Unable to fetch your data, check you internet</string>
     <string name="loading_data">Loading...</string>
+    <string name="no_tweets_found">No tweets found!!</string>
 </resources>
